@@ -1,14 +1,11 @@
 package main
 
 import (
-	"fmt"
-
-	"alpha-project-api/api/v1"
+	"alpha-project-api/api"
 )
 
 func main() {
 	r := api.SetupRouter()
-	fmt.Println("toto 3")
 	err := r.Run()
 	if err != nil {
 		panic(err)

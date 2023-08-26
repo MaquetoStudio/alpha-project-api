@@ -1,6 +1,8 @@
 package api
 
 import (
+	"alpha-project-api/api/handlers/auth"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -9,6 +11,13 @@ func SetupRouter() *gin.Engine {
 
 	// Middleware global (s'applique à toutes les routes)
 	//r.Use(SomeGlobalMiddleware())
+
+	// Authentication
+	authGroup := r.Group("/auth")
+	{
+		//authGroup.POST("/login", login)
+		authGroup.POST("/register", auth.RegisterHandler)
+	}
 
 	// Route pour la page d'accueil ou la santé de l'API
 	r.GET("/", func(c *gin.Context) {
